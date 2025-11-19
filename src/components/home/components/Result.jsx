@@ -36,14 +36,10 @@ const data = [
 const Result = () => {
   return (
     <div className="bg-[#c5003e] w-full flex flex-col items-center justify-center py-20 px-4 sm:px-6 lg:px-12">
-      
-      {/* Heading */}
       <h1 className="text-white text-center text-3xl sm:text-4xl md:text-[36px] font-normal tracking-tight max-w-3xl">
         Engagement that produces{" "}
         <span className="font-bold">better results:</span>
       </h1>
-
-      {/* Boxes Container */}
       <div className="w-full mt-10 flex flex-col gap-6 sm:flex-row sm:flex-wrap sm:gap-5 justify-center">
         {data.map(({ icon, percent, description }, idx) => (
           <div
@@ -57,8 +53,6 @@ const Result = () => {
           </div>
         ))}
       </div>
-
-      {/* Center Button */}
       <div className="mt-10">
         <Link
             href="/"

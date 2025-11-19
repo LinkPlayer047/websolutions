@@ -13,37 +13,37 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-center md:items-start md:justify-start">
           <h2 className="text-[16px] text-[#173b63] font-bold">Creativity</h2>
           <Link
-            href="/web-design"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Strategy
           </Link>
           <Link
-            href="/web-development"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Branding
           </Link>
           <Link
-            href="/seo"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Compaigns
           </Link>
           <Link
-            href="/branding"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Graphic Design
           </Link>
           <Link
-            href="/content-writing"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Content Development
           </Link>
           <Link
-            href="/content-writing"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Video Production
@@ -52,37 +52,37 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-center md:items-start md:justify-start">
           <h2 className="text-[16px] text-[#173b63] font-bold">Development</h2>
           <Link
-            href="/ui-ux"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Web Design
           </Link>
           <Link
-            href="/graphics"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Custom Development
           </Link>
           <Link
-            href="/smm"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             eCommerce
           </Link>
           <Link
-            href="/ads"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Support Services
           </Link>
           <Link
-            href="/email-marketing"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Managed Hosting
           </Link>
           <Link
-            href="/email-marketing"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             CMS Solutions
@@ -91,37 +91,37 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-center md:items-start md:justify-start">
           <h2 className="text-[16px] text-[#173b63] font-bold">Marketing</h2>
           <Link
-            href="/ecommerce"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Search Engine Optimization
           </Link>
           <Link
-            href="/crm"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Digital Advertising
           </Link>
           <Link
-            href="/app-dev"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Social Media Marketing
           </Link>
           <Link
-            href="/hosting"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Email Marketing
           </Link>
           <Link
-            href="/maintenance"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Lead Generation
           </Link>
           <Link
-            href="/maintenance"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Data & Analytics
@@ -129,49 +129,49 @@ const Footer = () => {
         </div>
         <div className="flex flex-col items-center justify-center md:items-start md:justify-start">
           <Link
-            href="/ecommerce"
+            href="/contact"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Sales Inquiry
           </Link>
           <Link
-            href="/crm"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Support
           </Link>
           <Link
-            href="/app-dev"
+            href="/career"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Careers
           </Link>
           <Link
-            href="/hosting"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Login
           </Link>
           <Link
-            href="/maintenance"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Privacy
           </Link>
           <Link
-            href="/maintenance"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Terms
           </Link>
           <Link
-            href="/maintenance"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Accessibility
           </Link>
           <Link
-            href="/maintenance"
+            href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
             Site Map
@@ -192,28 +192,28 @@ const Footer = () => {
           </div>
           <div className="flex gap-5 items-center py-7">
             <Link
-              href="/maintenance"
+              href="/"
               className="text-[#005c96] hover:text-[#c5003e]"
             >
-              <FaFacebookF className="h-5 w-5" />{" "}
+              <FaFacebookF className="h-5 w-5" />
             </Link>
             <Link
-              href="/maintenance"
+              href="/"
               className="text-[#005c96] hover:text-[#c5003e]"
             >
-              <FaInstagram className="h-5 w-5" />{" "}
+              <FaInstagram className="h-5 w-5" />
             </Link>
             <Link
-              href="/maintenance"
+              href="/"
               className="text-[#005c96] hover:text-[#c5003e]"
             >
-              <BsTwitterX className="h-5 w-5" />{" "}
+              <BsTwitterX className="h-5 w-5" />
             </Link>
             <Link
-              href="/maintenance"
+              href="/"
               className="text-[#005c96] hover:text-[#c5003e]"
             >
-              <FaLinkedinIn className="h-5 w-5" />{" "}
+              <FaLinkedinIn className="h-5 w-5" />
             </Link>
           </div>
         </div>

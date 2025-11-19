@@ -72,8 +72,6 @@ const AboutSlider = () => {
   return (
     <div className="py-16 w-full bg-[#005c96] flex items-center justify-center">
       <div className="w-[92%] sm:w-[88%] md:w-[80%] flex flex-col items-center relative">
-        
-        {/* Slides container */}
         <div className="w-full overflow-hidden rounded-md">
           <div className="relative h-auto min-h-[160px] sm:min-h-[180px] md:min-h-[210px] lg:min-h-[250px]" aria-live="polite">
             {slides.map((slide, i) => (
@@ -90,11 +88,7 @@ const AboutSlider = () => {
             ))}
           </div>
         </div>
-
-        {/* Controls: dots + play/pause */}
         <div className="mt-8 w-full flex items-center justify-center gap-4 flex-wrap">
-          
-          {/* Prev button */}
           <button
             onClick={prev}
             className="hidden md:inline-flex items-center justify-center p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition"
@@ -102,8 +96,6 @@ const AboutSlider = () => {
           >
             ‹
           </button>
-
-          {/* Dots */}
           <div className="flex items-center gap-3">
             {slides.map((_, i) => (
               <button
@@ -116,8 +108,6 @@ const AboutSlider = () => {
               />
             ))}
           </div>
-
-          {/* Play / Pause */}
           <button
             onClick={togglePlay}
             className="ml-2 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white text-[#005c96] font-semibold hover:opacity-90 transition"
@@ -126,8 +116,6 @@ const AboutSlider = () => {
           >
             {isPlaying ? "Pause" : "Play"}
           </button>
-
-          {/* Next button */}
           <button
             onClick={next}
             className="hidden md:inline-flex items-center justify-center p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition"

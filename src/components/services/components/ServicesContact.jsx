@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
 import React from "react";
 import { FiPhone, FiClock, FiMapPin } from "react-icons/fi";
 import { FaPlay } from "react-icons/fa6";
 import Link from "next/link";
 
-const ContactForm = () => {
+const ServicesContact = () => {
   return (
     <div className="bg-[#002b46] w-full py-25 px-5 flex justify-center">
       <div className="w-[90%] lg:w-[80%] flex flex-col md:flex-row gap-12">
@@ -39,32 +39,62 @@ const ContactForm = () => {
           </div>
         </div>
         <div className="w-full flex flex-col gap-1">
-                      <label htmlFor="" className="text-white text-[18px] font-light italic">Name*</label>
+          <label
+            htmlFor=""
+            className="text-white text-[18px] font-light italic"
+          >
+            Name*
+          </label>
           <input
             type="text"
             className="w-full py-2 px-4 rounded-md bg-[#9cabb5] outline-none"
           />
-                    <label htmlFor="" className="text-white text-[18px] font-light italic">Organization*</label>
+          <label
+            htmlFor=""
+            className="text-white text-[18px] font-light italic"
+          >
+            Organization*
+          </label>
           <input
             type="text"
             className="w-full py-2 px-4 rounded-md bg-[#9cabb5] outline-none"
           />
-                    <label htmlFor="" className="text-white text-[18px] font-light italic">Email*</label>
+          <label
+            htmlFor=""
+            className="text-white text-[18px] font-light italic"
+          >
+            Email*
+          </label>
           <input
             type="email"
             className="w-full py-2 px-4 rounded-md bg-[#9cabb5] outline-none"
           />
-                    <label htmlFor="" className="text-white text-[18px] font-light italic">Phone*</label>
+          <label
+            htmlFor=""
+            className="text-white text-[18px] font-light italic"
+          >
+            Phone*
+          </label>
           <input
             type="text"
             className="w-full py-2 px-4 rounded-md bg-[#9cabb5] outline-none"
           />
-          <label htmlFor="" className="text-white text-[18px] font-light italic">Website*</label>
+          <label
+            htmlFor=""
+            className="text-white text-[18px] font-light italic"
+          >
+            Website*
+          </label>
           <input
             type="text"
             className="w-full py-2 px-4 rounded-md bg-[#9cabb5] outline-none"
           />
-          <label htmlFor="" className="text-white text-[18px] font-light italic">How can we help you?</label>
+          <label
+            htmlFor=""
+            className="text-white text-[18px] font-light italic"
+          >
+            How can we help you?
+          </label>
           <textarea
             rows="5"
             className="w-full py-2 px-4 rounded-md bg-[#9cabb5] outline-none resize-none"
@@ -72,9 +102,9 @@ const ContactForm = () => {
           <Link
             href="/"
             className="group mt-5 w-full md:w-[40%] lg:w-[30%] flex items-center justify-center gap-2 
-             bg-white text-black py-3 rounded-full font-semibold 
-             transition-all duration-300 transform
-             hover:-translate-y-1 hover:bg-[#a00033] hover:text-white"
+                 bg-white text-black py-3 rounded-full font-semibold 
+                 transition-all duration-300 transform
+                 hover:-translate-y-1 hover:bg-[#a00033] hover:text-white"
           >
             Submit
             <FaPlay className="text-[10px] text-[#a00033] group-hover:text-white transition-all duration-300" />
@@ -85,4 +115,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default ServicesContact;

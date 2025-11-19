@@ -3,7 +3,7 @@ import React from "react";
 const CareerCompany = () => {
   return (
     <div className="w-full flex items-center justify-center py-20">
-      <div className="w-[95%] flex flex-col gap-5 items-start">
+      <div className="w-[95%] flex flex-col gap-5 items-center justify-center">
         <h1 className="text-[36px] text-[#002b46] font-bold lg:pl-30">
           Enjoy the company <span className="font-normal">you’ll keep.</span>
         </h1>
@@ -14,8 +14,6 @@ const CareerCompany = () => {
               className="w-full h-auto object-contain hover:opacity-100 hover:cursor-pointer"
               alt=""
             />
-
-            {/* OVERLAY + TEXT */}
             <div
               className="absolute inset-0 bg-black/80 opacity-100 group-hover:opacity-0 transition-all duration-300
                 flex items-center justify-center pointer-events-none"
@@ -30,8 +28,6 @@ const CareerCompany = () => {
               className="w-full h-auto object-contain hover:opacity-100 hover:cursor-pointer"
               alt=""
             />
-
-            {/* OVERLAY + TEXT */}
             <div
               className="absolute inset-0 bg-blue-400/80 opacity-100 group-hover:opacity-0 transition-all duration-300
                 flex items-center justify-center pointer-events-none"
@@ -46,8 +42,6 @@ const CareerCompany = () => {
               className="w-full h-auto object-contain hover:opacity-100 hover:cursor-pointer"
               alt=""
             />
-
-            {/* OVERLAY + TEXT */}
             <div
               className="absolute inset-0 bg-blue-400/80 opacity-100 group-hover:opacity-0 transition-all duration-300
                 flex items-center justify-center pointer-events-none"
@@ -62,8 +56,6 @@ const CareerCompany = () => {
               className="w-full h-auto object-contain hover:opacity-100 hover:cursor-pointer"
               alt=""
             />
-
-            {/* OVERLAY + TEXT */}
             <div
               className="absolute inset-0 bg-red-500/80 opacity-100 group-hover:opacity-0 transition-all duration-300
                 flex items-center justify-center pointer-events-none"
@@ -78,8 +70,6 @@ const CareerCompany = () => {
               className="w-full h-auto object-contain hover:opacity-100 hover:cursor-pointer"
               alt=""
             />
-
-            {/* OVERLAY + TEXT */}
             <div
               className="absolute inset-0 bg-red-500/80 opacity-100 group-hover:opacity-0 transition-all duration-300
                 flex items-center justify-center pointer-events-none"
@@ -95,7 +85,6 @@ const CareerCompany = () => {
               alt=""
             />
 
-            {/* OVERLAY + TEXT */}
             <div
               className="absolute inset-0 bg-blue-400/80 opacity-100 group-hover:opacity-0 transition-all duration-300
                 flex items-center justify-center pointer-events-none"
@@ -111,7 +100,6 @@ const CareerCompany = () => {
               alt=""
             />
 
-            {/* OVERLAY + TEXT */}
             <div
               className="absolute inset-0 bg-blue-400/80 opacity-100 group-hover:opacity-0 transition-all duration-300
                 flex items-center justify-center pointer-events-none"
@@ -126,8 +114,6 @@ const CareerCompany = () => {
               className="w-full h-auto object-contain hover:opacity-100 hover:cursor-pointer"
               alt=""
             />
-
-            {/* OVERLAY + TEXT */}
             <div
               className="absolute inset-0 bg-black/80 opacity-100 group-hover:opacity-0 transition-all duration-300
                 flex items-center justify-center pointer-events-none"

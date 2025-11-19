@@ -9,7 +9,6 @@ const ContactForm = () => {
   return (
     <div className="bg-[#002b46] w-full py-30 px-5 flex justify-center">
       <div className="w-[90%] lg:w-[80%] flex flex-col md:flex-row gap-12">
-        {/* LEFT SIDE */}
         <div className="w-full flex flex-col gap-6">
           <h1 className="md:text-[36px] text-[26px] text-white font-bold leading-tight">
             Ready for the next step?
@@ -18,8 +17,6 @@ const ContactForm = () => {
           <p className="md:text-[22px] text-[16px] text-white">
             Let’s talk about how we can help you with your web design needs.
           </p>
-
-          {/* DASHED CONTACT INFO */}
           <div className="w-full md:w-[70%] border-y-2 border-dashed border-gray-500 py-3">
             <div className="flex items-center gap-3 py-3">
               <FiPhone className="text-white text-[22px]" />
@@ -41,8 +38,6 @@ const ContactForm = () => {
             </div>
           </div>
         </div>
-
-        {/* RIGHT SIDE FORM */}
         <div className="w-full flex flex-col gap-1">
           <label
             htmlFor=""
