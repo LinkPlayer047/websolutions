@@ -15,7 +15,7 @@ const teamMembers = [
     image: "/lori.webp",
   },
   {
-    name: "Stephanie Courchesne",
+    name: "Stephanie",
     role: "Business Development",
     image: "/stephanie.webp",
   },
@@ -73,7 +73,7 @@ const AboutTeam = () => {
           </Link>
         </div>
       </div>
-      <div className="mt-20 w-[80%] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 place-items-center">
+      <div className="mt-20 w-[90%] lg:w-[80%] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 place-items-center">
         {teamMembers.map((member, idx) => {
           const bgColor = idx % 2 === 0 ? "#005c96" : "#c5003e";
 
@@ -81,14 +81,14 @@ const AboutTeam = () => {
             <div key={idx} className="flex flex-col items-center">
 
               <div
-                className="mt-10 relative rounded-full overflow-visible flex items-end justify-center w-[130px] h-[130px] sm:w-[150px] sm:h-[150px] md:w-[182px] md:h-[180px]"
+                className="mt-10 relative rounded-full overflow-visible flex items-end justify-center w-[130px] h-[130px] sm:w-[157px] sm:h-[157px] lg:w-[182px] lg:h-[180px]"
                 style={{ background: bgColor }}
               >
 
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="absolute left-1/2 -translate-x-1/2 -top-7 object-cover rounded-full w-[130px] h-[160px] sm:w-[147px] sm:h-[173px] md:w-[180px] md:h-[209px]"
+                  className="absolute left-1/2 -translate-x-1/2 -top-7 object-cover rounded-full w-[130px] h-[160px] sm:w-[157px] sm:h-[187px] lg:w-[180px] lg:h-[209px]"
                 />
               </div>
 
@@ -96,7 +96,7 @@ const AboutTeam = () => {
                 <h2 className="text-lg font-semibold text-[#1f5670]">
                   {member.name}
                 </h2>
-                <p className="text-sm text-gray-600 italic">{member.role}</p>
+                <p className="text-xs text-gray-600 italic">{member.role}</p>
               </div>
             </div>
           );
