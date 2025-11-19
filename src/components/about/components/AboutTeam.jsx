@@ -81,14 +81,14 @@ const AboutTeam = () => {
             <div key={idx} className="flex flex-col items-center">
 
               <div
-                className="mt-10 relative rounded-full overflow-visible flex items-end justify-center w-[130px] h-[130px] sm:w-[150px] sm:h-[150px] md:w-[160px] md:h-[160px]"
+                className="mt-10 relative rounded-full overflow-visible flex items-end justify-center w-[130px] h-[130px] sm:w-[150px] sm:h-[150px] md:w-[182px] md:h-[180px]"
                 style={{ background: bgColor }}
               >
 
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="absolute left-1/2 -translate-x-1/2 -top-7 object-cover rounded-full w-[130px] h-[160px] sm:w-[147px] sm:h-[173px] md:w-[157px] md:h-[187px]"
+                  className="absolute left-1/2 -translate-x-1/2 -top-7 object-cover rounded-full w-[130px] h-[160px] sm:w-[147px] sm:h-[173px] md:w-[180px] md:h-[209px]"
                 />
               </div>
 
