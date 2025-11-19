@@ -2,7 +2,7 @@ import React from "react";
 import { FaPlay } from "react-icons/fa6";
 import Link from "next/link";
 
-// Example team members data
+
 const teamMembers = [
   {
     name: "Tom Barton",
@@ -44,7 +44,7 @@ const teamMembers = [
     role: "Marketing Manager",
     image: "/janaura.webp",
   },
-  // Add more members as needed
+
 ];
 
 const AboutTeam = () => {
@@ -73,37 +73,25 @@ const AboutTeam = () => {
           </Link>
         </div>
       </div>
-      <div className="mt-20 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 w-full place-items-center">
+      <div className="mt-20 w-[80%] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 place-items-center">
         {teamMembers.map((member, idx) => {
           const bgColor = idx % 2 === 0 ? "#005c96" : "#c5003e";
 
           return (
             <div key={idx} className="flex flex-col items-center">
-              {/* Circle Background */}
+
               <div
-                className="
-            mt-10 relative rounded-full overflow-visible 
-            flex items-end justify-center
-            w-[130px] h-[130px]
-            sm:w-[150px] sm:h-[150px]
-            md:w-[160px] md:h-[160px]
-          "
+                className="mt-10 relative rounded-full overflow-visible flex items-end justify-center w-[130px] h-[130px] sm:w-[150px] sm:h-[150px] md:w-[160px] md:h-[160px]"
                 style={{ background: bgColor }}
               >
-                {/* Member Image (overlapping top) */}
+
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="
-              absolute left-1/2 -translate-x-1/2 -top-7 object-cover rounded-full
-              w-[130px] h-[160px]
-              sm:w-[147px] sm:h-[173px]
-              md:w-[157px] md:h-[187px]
-            "
+                  className="absolute left-1/2 -translate-x-1/2 -top-7 object-cover rounded-full w-[130px] h-[160px] sm:w-[147px] sm:h-[173px] md:w-[157px] md:h-[187px]"
                 />
               </div>
 
-              {/* Name + Role */}
               <div className="mt-5 text-center">
                 <h2 className="text-lg font-semibold text-[#1f5670]">
                   {member.name}
