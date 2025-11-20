@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function WorkCard({ project }) {
   return (
     <Link href={`/work/${project.slug}`}>
-      <div className="relative group overflow-hidden break-inside-avoid rounded-lg mb-4">
+      <div className="relative group overflow-hidden break-inside-avoid mb-4">
         {/* Image */}
         <div className="relative w-full">
           <Image

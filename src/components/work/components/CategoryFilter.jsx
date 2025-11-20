@@ -1,30 +1,66 @@
 "use client";
+import { useState, useEffect } from "react";
 
-const categories = [
-  { label: "All", value: "all" },
-  { label: "Lifestyle", value: "lifestyle" },
-  { label: "Retail", value: "retail" },
-  { label: "Nonprofit", value: "nonprofit" },
-  { label: "Marketing", value: "marketing" },
-];
+export default function CategoryFilter({ category, setCategory }) {
+  const categories = ["all", "branding", "web-design", "graphic design" ];
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-export default function CategoryFilter({ selected, onChange }) {
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div className="flex gap-3 justify-center mb-10 flex-wrap">
-      {categories.map(cat => (
-        <button
-          key={cat.value}
-          onClick={() => onChange(cat.value)}
-          className={`px-4 py-2 rounded-full border
-            ${selected === cat.value ? 
-              "bg-black text-white" : 
-              "bg-white text-black"
-            }`
-          }
-        >
-          {cat.label}
-        </button>
-      ))}
+    <div className="sticky top-15 z-40 bg-white py-10 mb-4 w-full">
+      {isMobile ? (
+        <div className="relative w-48 mx-auto">
+          <button
+            className="w-full px-4 py-2 rounded-full bg-[#c5003e] text-white flex justify-between items-center"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {category.toUpperCase()}
+            <span className="ml-2">{isOpen ? "▲" : "▼"}</span>
+          </button>
+
+          {isOpen && (
+            <div className="absolute w-full mt-1 border rounded-md bg-white shadow-lg">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => {
+                    setCategory(cat);
+                    setIsOpen(false);
+                  }}
+                  className={`block w-full text-left px-4 py-2 hover:bg-[#c5003e] hover:text-white ${
+                    category === cat ? "bg-[#c5003e] text-white" : ""
+                  }`}
+                >
+                  {cat.toUpperCase()}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="flex justify-center gap-4">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setCategory(cat)}
+              className={`px-4 py-2 rounded-full font-semibold transition-colors duration-300 ${
+                category === cat
+                  ? "bg-[#c5003e] text-white"
+                  : "bg-white text-black hover:bg-[#c5003e] hover:text-white"
+              }`}
+            >
+              {cat.toUpperCase()}
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
