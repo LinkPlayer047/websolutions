@@ -45,7 +45,7 @@ export default function CategoryFilter({ category, setCategory }) {
           )}
         </div>
       ) : (
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-start gap-4">
           {categories.map((cat) => (
             <button
               key={cat}

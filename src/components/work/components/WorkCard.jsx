@@ -6,7 +6,7 @@ export default function WorkCard({ project }) {
   return (
     <Link href={`/work/${project.slug}`}>
       <div className="relative group overflow-hidden break-inside-avoid mb-4">
-        {/* Image */}
+        
         <div className="relative w-full">
           <Image
             src={project.thumbnail}
@@ -17,12 +17,12 @@ export default function WorkCard({ project }) {
           />
         </div>
 
-        {/* Overlay + Text */}
-        <div className="absolute inset-0">
-          {/* Semi-transparent black overlay */}
-          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-          {/* Text appears only on hover */}
+        <div className="absolute inset-0">
+
+          <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+
           <div className="absolute inset-0 flex items-center justify-center">
             <p className="text-white text-center text-2xl font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 px-2">
               {project.title}
