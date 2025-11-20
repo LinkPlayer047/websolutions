@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { FaPlay } from "react-icons/fa6";
 import { FaRegLightbulb } from "react-icons/fa";
 import { MdDesignServices } from "react-icons/md";
 import { IoVideocamOutline } from "react-icons/io5";
@@ -41,7 +40,11 @@ const Navbar = () => {
       <div className="w-full px-5 flex flex-col md:flex-row items-center justify-between">
         <div>
           <img
-            src={scrolled ? "/logo-web-solutions.svg" : "/logo-web-solutions-ko.svg"}
+            src={
+              scrolled
+                ? "/logo-web-solutions.svg"
+                : "/logo-web-solutions-ko.svg"
+            }
             alt="logo"
             width={235}
             height={37}
@@ -238,16 +241,10 @@ const Navbar = () => {
           </div>
 
           <Link
-            href="/"
+            href="/work"
             className="text-[16px] md:text-[17px] lg:text-[18px] px-5 font-bold rounded-3xl hover:bg-[#c5003e] hover:text-white transition"
           >
             work
-          </Link>
-          <Link
-            href="/"
-            className="text-[16px] md:text-[17px] lg:text-[18px] px-5 font-bold rounded-3xl hover:bg-[#c5003e] hover:text-white transition"
-          >
-            insights
           </Link>
           <Link
             href="/about"
@@ -267,28 +264,28 @@ const Navbar = () => {
           >
             contact
           </Link>
-        </div>
 
-        <div className="md:hidden ml-3">
-          <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-            <svg
-              className="w-6 h-6 text-black"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d={
-                  mobileMenuOpen
-                    ? "M6 18L18 6M6 6l12 12"
-                    : "M4 6h16M4 12h16M4 18h16"
-                }
-              />
-            </svg>
-          </button>
+          <div className="md:hidden ml-3">
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              <svg
+                className="w-6 h-6 text-black"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d={
+                    mobileMenuOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16M4 18h16"
+                  }
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -340,7 +337,6 @@ const Navbar = () => {
 
               {mobileServicesOpen && (
                 <div className="flex flex-col p-2 gap-2 mt-2 bg-[#090909] rounded">
-
                   <h2 className="text-white font-bold text-lg mt-2">
                     Creativity
                   </h2>
@@ -366,8 +362,7 @@ const Navbar = () => {
                     href="/"
                     className="flex items-center gap-2 hover:bg-gray-700 px-3 py-1 rounded text-white"
                   >
-                    <MdDesignServices className="w-4 h-4" /> Graphic
-                    Design
+                    <MdDesignServices className="w-4 h-4" /> Graphic Design
                   </Link>
                   <Link
                     href="/"
@@ -380,8 +375,7 @@ const Navbar = () => {
                     href="/"
                     className="flex items-center gap-2 hover:bg-gray-700 px-3 py-1 rounded text-white"
                   >
-                    <IoVideocamOutline className="w-4 h-4" /> Video
-                    Production
+                    <IoVideocamOutline className="w-4 h-4" /> Video Production
                   </Link>
 
                   <h2 className="text-white font-bold text-lg mt-2">
@@ -397,8 +391,7 @@ const Navbar = () => {
                     href="/"
                     className="flex items-center gap-2 hover:bg-gray-700 px-3 py-1 rounded text-white"
                   >
-                    <FaLaptopCode className="w-4 h-4" /> Custom
-                    Development
+                    <FaLaptopCode className="w-4 h-4" /> Custom Development
                   </Link>
                   <Link
                     href="/"
@@ -417,8 +410,7 @@ const Navbar = () => {
                     href="/"
                     className="flex items-center gap-2 hover:bg-gray-700 px-3 py-1 rounded text-white"
                   >
-                    <LuShieldCheck className="w-4 h-4" /> Managed
-                    Hosting
+                    <LuShieldCheck className="w-4 h-4" /> Managed Hosting
                   </Link>
                   <Link
                     href="/"
@@ -467,24 +459,17 @@ const Navbar = () => {
                     href="/"
                     className="flex items-center gap-2 hover:bg-gray-700 px-3 py-1 rounded text-white"
                   >
-                    <AiOutlineLineChart className="w-4 h-4" /> Data &
-                    Analytics
+                    <AiOutlineLineChart className="w-4 h-4" /> Data & Analytics
                   </Link>
                 </div>
               )}
             </div>
 
             <Link
-              href="/"
+              href="/work"
               className="block p-2 pl-3 w-full text-[18px] hover:bg-gray-800 font-bold border-t border-gray-700 rounded"
             >
               Work
-            </Link>
-            <Link
-              href="/"
-              className="block p-2 pl-3 w-full text-[18px] hover:bg-gray-800 font-bold border-t border-gray-700 rounded"
-            >
-              Insights
             </Link>
             <Link
               href="/about"
