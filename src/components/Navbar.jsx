@@ -4,29 +4,40 @@ import Link from "next/link";
 import { FaRegLightbulb } from "react-icons/fa";
 import { MdDesignServices } from "react-icons/md";
 import { IoVideocamOutline } from "react-icons/io5";
-import { FaLaptopCode } from "react-icons/fa6";
-import { RiShoppingCart2Line } from "react-icons/ri";
+import { FaLaptopCode, FaLaptopFile, FaRegMap } from "react-icons/fa6";
+import { RiShoppingCart2Line, RiAdvertisementLine } from "react-icons/ri";
 import { LuShieldCheck } from "react-icons/lu";
 import { IoSearchSharp } from "react-icons/io5";
-import { RiAdvertisementLine } from "react-icons/ri";
 import { TfiEmail } from "react-icons/tfi";
-import { AiOutlineDollar } from "react-icons/ai";
-import { AiOutlineLineChart } from "react-icons/ai";
-import { FaRegMap } from "react-icons/fa6";
+import { AiOutlineDollar, AiOutlineLineChart } from "react-icons/ai";
 import { GiPaddles } from "react-icons/gi";
-import { FaLaptopFile } from "react-icons/fa6";
 import { LiaBatteryQuarterSolid } from "react-icons/lia";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isWorkPage = pathname === "/work";
+  const [hideLogo, setHideLogo] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setHideLogo(true);
+      } else {
+        setHideLogo(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -34,23 +45,41 @@ const Navbar = () => {
   return (
     <div
       className={`w-full flex justify-center py-3 font-switzer fixed top-0 left-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white text-black shadow-md" : "bg-transparent text-white"
+        isWorkPage
+          ? "bg-white text-black shadow-md"
+          : scrolled
+          ? "bg-white text-black shadow-md"
+          : "bg-transparent text-white"
       }`}
     >
       <div className="w-full px-5 flex flex-col md:flex-row items-center justify-between">
         <div>
           <img
             src={
-              scrolled
+              isWorkPage
+                ? "/logo-web-solutions.svg"
+                : scrolled
                 ? "/logo-web-solutions.svg"
                 : "/logo-web-solutions-ko.svg"
             }
             alt="logo"
             width={235}
             height={37}
+            className={`transition-all duration-300
+      ${hideLogo ? "opacity-0 h-0" : "opacity-100 h-auto"} 
+      md:opacity-100 md:h-auto`}
           />
         </div>
+
         <div className="flex items-center gap-3 md:gap-0">
+          <Link
+            href="/"
+            className="hidden md:inline-block text-[16px] md:text-[17px] lg:text-[18px] px-5 font-bold rounded-3xl hover:bg-[#c5003e] hover:text-white transition"
+          >
+            home
+          </Link>
+
+          {/* Services Dropdown */}
           <div className="relative group">
             <div className="px-5 rounded-3xl transition-all duration-200 group-hover:bg-[#c5003e] group-hover:text-white">
               <Link
@@ -60,181 +89,133 @@ const Navbar = () => {
                 services
               </Link>
             </div>
-
-            <div className="fixed left-0 top-[50px] w-screen bg-white shadow-xl z-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+            <div className="fixed left-0 top-[50px] w-screen bg-white text-black shadow-xl z-40 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
               <div className="max-w-7xl mx-auto grid grid-cols-3 gap-10 p-10">
+                {/* Creativity Column */}
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl font-bold">Creativity</h2>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <FaRegLightbulb className="w-4 h-4" />
-                      Strategy
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <img src="/branding.svg" className="w-4 h-4" />
-                      Branding
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <FaRegMap className="w-4 h-4" />
-                      Compaigns
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <MdDesignServices className="w-4 h-4" />
-                      Graphic Design
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <img src="/marketing.svg" className="w-4 h-4" />
-                      Content Development
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <IoVideocamOutline className="w-4 h-4" />
-                      Video Production
-                    </Link>
-                  </div>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <FaRegLightbulb className="w-4 h-4" /> Strategy
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <img src="/branding.svg" className="w-4 h-4" /> Branding
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <FaRegMap className="w-4 h-4" /> Compaigns
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <MdDesignServices className="w-4 h-4" /> Graphic Design
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <img src="/marketing.svg" className="w-4 h-4" /> Content
+                    Development
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <IoVideocamOutline className="w-4 h-4" /> Video Production
+                  </Link>
                 </div>
 
+                {/* Development Column */}
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl font-bold">Development</h2>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <FaLaptopFile className="w-4 h-4" />
-                      Web Design
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <FaLaptopCode className="w-4 h-4" />
-                      Custom Development
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <RiShoppingCart2Line className="w-4 h-4" />
-                      eCommerce
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <GiPaddles className="w-4 h-4" />
-                      Support Services
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <LuShieldCheck className="w-4 h-4" />
-                      Managed Hosting
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <LiaBatteryQuarterSolid className="w-4 h-4" />
-                      CMS Solutions
-                    </Link>
-                  </div>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <FaLaptopFile className="w-4 h-4" /> Web Design
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <FaLaptopCode className="w-4 h-4" /> Custom Development
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <RiShoppingCart2Line className="w-4 h-4" /> eCommerce
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <GiPaddles className="w-4 h-4" /> Support Services
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <LuShieldCheck className="w-4 h-4" /> Managed Hosting
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <LiaBatteryQuarterSolid className="w-4 h-4" /> CMS Solutions
+                  </Link>
                 </div>
 
+                {/* Marketing Column */}
                 <div className="flex flex-col gap-3">
                   <h2 className="text-2xl font-bold">Marketing</h2>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <IoSearchSharp className="w-4 h-4" />
-                      Search Engine Optimization
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <RiAdvertisementLine className="w-4 h-4" />
-                      Digital Advertising
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <img src="/marketing.svg" className="w-4 h-4" />
-                      Social Media Marketing
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <TfiEmail className="w-4 h-4" />
-                      Email Marketing
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <AiOutlineDollar className="w-4 h-4" />
-                      Lead Generation
-                    </Link>
-                  </div>
-                  <div className="shrink-0">
-                    <Link
-                      href="/"
-                      className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
-                    >
-                      <AiOutlineLineChart className="w-4 h-4" />
-                      Data & Analytics
-                    </Link>
-                  </div>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <IoSearchSharp className="w-4 h-4" /> Search Engine
+                    Optimization
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <RiAdvertisementLine className="w-4 h-4" /> Digital
+                    Advertising
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <img src="/marketing.svg" className="w-4 h-4" /> Social
+                    Media Marketing
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <TfiEmail className="w-4 h-4" /> Email Marketing
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <AiOutlineDollar className="w-4 h-4" /> Lead Generation
+                  </Link>
+                  <Link
+                    href="/"
+                    className="inline-flex items-center gap-3 px-5 py-2 rounded-3xl hover:bg-[#c5003e] hover:text-white"
+                  >
+                    <AiOutlineLineChart className="w-4 h-4" /> Data & Analytics
+                  </Link>
                 </div>
               </div>
             </div>
@@ -265,10 +246,17 @@ const Navbar = () => {
             contact
           </Link>
 
+          {/* Mobile Menu Button */}
           <div className="md:hidden ml-3">
             <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               <svg
-                className="w-6 h-6 text-black"
+                className={`w-6 h-6 transition-colors duration-300 ${
+                  isWorkPage
+                    ? "text-black"
+                    : scrolled
+                    ? "text-black"
+                    : "text-white"
+                }`}
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -289,18 +277,19 @@ const Navbar = () => {
         </div>
       </div>
 
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="fixed top-0 right-0 h-full w-full z-50 flex">
           <div
             className="w-1/5 h-full backdrop-blur-sm bg-black/30"
             onClick={() => setMobileMenuOpen(false)}
           ></div>
-
           <div
             className={`h-full w-4/5 bg-[#090909] text-white flex flex-col gap-5 overflow-y-auto transform transition-transform duration-300 ${
               mobileMenuOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
+            {/* Close Button */}
             <button
               className="self-end mb-5"
               onClick={() => setMobileMenuOpen(false)}
@@ -320,12 +309,21 @@ const Navbar = () => {
               </svg>
             </button>
 
+            {/* Mobile Links */}
             <div className="w-full">
+              <Link
+                href="/"
+                className="block p-2 pl-3 w-full text-[18px] hover:bg-gray-800 font-bold border-t border-gray-700 pb-7 pt-3 rounded"
+              >
+                Home
+              </Link>
+
+              {/* Mobile Services Toggle */}
               <button
                 onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                 className="w-full flex justify-between items-center text-[18px] hover:bg-gray-800 font-bold border-t border-gray-700 rounded px-3 py-3"
               >
-                Services
+                Services{" "}
                 <span
                   className={`text-gray-400 text-xl transition-transform duration-300 ${
                     mobileServicesOpen ? "rotate-45" : "rotate-0"
@@ -335,8 +333,11 @@ const Navbar = () => {
                 </span>
               </button>
 
+              {/* Mobile Services Dropdown */}
               {mobileServicesOpen && (
                 <div className="flex flex-col p-2 gap-2 mt-2 bg-[#090909] rounded">
+                  {/* Same structure as desktop dropdown */}
+                  {/* Creativity */}
                   <h2 className="text-white font-bold text-lg mt-2">
                     Creativity
                   </h2>
@@ -378,6 +379,7 @@ const Navbar = () => {
                     <IoVideocamOutline className="w-4 h-4" /> Video Production
                   </Link>
 
+                  {/* Development */}
                   <h2 className="text-white font-bold text-lg mt-2">
                     Development
                   </h2>
@@ -403,8 +405,7 @@ const Navbar = () => {
                     href="/"
                     className="flex items-center gap-2 hover:bg-gray-700 px-3 py-1 rounded text-white"
                   >
-                    <img src="/maintenance.svg" className="w-4 h-4" /> Support
-                    Services
+                    <GiPaddles className="w-4 h-4" /> Support Services
                   </Link>
                   <Link
                     href="/"
@@ -419,6 +420,7 @@ const Navbar = () => {
                     <LiaBatteryQuarterSolid className="w-4 h-4" /> CMS Solutions
                   </Link>
 
+                  {/* Marketing */}
                   <h2 className="text-white font-bold text-lg mt-2">
                     Marketing
                   </h2>
@@ -465,6 +467,13 @@ const Navbar = () => {
               )}
             </div>
 
+            {/* Other Mobile Links */}
+            <Link
+              href="/"
+              className="block p-2 pl-3 w-full text-[18px] hover:bg-gray-800 font-bold border-t border-gray-700 rounded"
+            >
+              Home
+            </Link>
             <Link
               href="/work"
               className="block p-2 pl-3 w-full text-[18px] hover:bg-gray-800 font-bold border-t border-gray-700 rounded"

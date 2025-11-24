@@ -9,7 +9,8 @@ const Portfolio = () => {
         Browse our portfolio of{" "}
         <span className="font-bold">impactful work:</span>
       </h1>
-      <div className="w-[90%] mt-5 columns-1 sm:columns-2 lg:columns-4 gap-5 space-y-5">
+      <div
+        className="w-[90%] mt-5 columns-2 sm:columns-2 md:columns-3 lg:columns-4 gap-5 space-y-5">
         <div className="relative group overflow-hidden break-inside-avoid">
           <img
             src="/thumb-crs_2.webp"

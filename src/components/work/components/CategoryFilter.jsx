@@ -14,7 +14,7 @@ export default function CategoryFilter({ category, setCategory }) {
   }, []);
 
   return (
-    <div className="sticky top-15 z-40 bg-white py-10 mb-4 w-full">
+    <div className="sticky top-14 z-40 bg-white py-10 mb-4 w-full">
       {isMobile ? (
         <div className="relative w-48 mx-auto">
           <button

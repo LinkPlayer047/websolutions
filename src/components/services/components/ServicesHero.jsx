@@ -20,7 +20,7 @@ import { LiaBatteryQuarterSolid } from "react-icons/lia";
 const ServicesHero = () => {
   return (
     <div className="w-full bg-[#072039] flex flex-col items-center py-15">
-      <div className="w-[90%] relative md:w-[80%] flex flex-col items-center gap-3 text-center">\
+      <div className="w-[90%] relative md:w-[80%] flex flex-col items-center gap-3 text-center">
         <h1 className="text-white pt-20 font-bold tracking-tight text-[28px] md:text-[40px] leading-tight">
           Everything you need <span className="font-light">to succeed</span>
         </h1>

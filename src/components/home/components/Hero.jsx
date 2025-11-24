@@ -5,7 +5,7 @@ import { FaPlay } from "react-icons/fa6";
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen overflow-hidden flex items-center justify-center">
+    <section className="relative w-full h-[85vh] overflow-hidden flex items-center justify-center">
       <video
         src="/hero.mp4"
         autoPlay
