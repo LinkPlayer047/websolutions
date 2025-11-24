@@ -5,7 +5,7 @@ import { FiPhone, FiClock, FiMapPin } from "react-icons/fi";
 import { FaPlay } from "react-icons/fa6";
 import { useState } from "react";
 
-export default function ServicesContact() {
+export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -30,7 +30,7 @@ export default function ServicesContact() {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
+      const res = await fetch("https://web-solutions-backend.vercel.app/api/contact/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
