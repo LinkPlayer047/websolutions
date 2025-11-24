@@ -72,7 +72,7 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-3 md:gap-0">
-          <Link
+            <Link
             href="/"
             className="hidden md:inline-block text-[16px] md:text-[17px] lg:text-[18px] px-5 font-bold rounded-3xl hover:bg-[#c5003e] hover:text-white transition"
           >
