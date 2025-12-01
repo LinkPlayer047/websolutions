@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const API_BASE = "https://backend-plum-rho-jbhmx6o6nc.vercel.app/api/blogs";
 
 export default function SingleBlogPage() {
-  const { id } = useParams(); // ye exact _id MongoDB se match hona chahiye
+  const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
 
