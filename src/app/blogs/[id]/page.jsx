@@ -1,73 +1,137 @@
-"use client";
+import { NextResponse } from "next/server";
+import Blog from "@/models/Blogs";
+import connectDB from "@/lib/db";
 
-import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+// Allowed origins
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://admin-panel-six-vert.vercel.app",
+  "https://websolutions-ten.vercel.app",
+];
 
-const API_BASE = "https://backend-plum-rho-jbhmx6o6nc.vercel.app/api/blogs";
+// Helper function to generate CORS headers
+const getCorsHeaders = (req) => {
+  const origin = req.headers.get("origin");
+  return {
+    "Access-Control-Allow-Origin": allowedOrigins.includes(origin) ? origin : allowedOrigins[0],
+    "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  };
+};
 
-export default function SingleBlogPage() {
-  const { id } = useParams(); // Dynamic URL se id le raha hai
-  const [blog, setBlog] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+// OPTIONS preflight
+export async function OPTIONS(req) {
+  const corsHeaders = getCorsHeaders(req);
+  return NextResponse.json({}, { status: 200, headers: corsHeaders });
+}
 
-  useEffect(() => {
-    if (!id) return; // Pehli render pe id undefined ho sakta hai
+// GET single blog
+export async function GET(req, { params }) {
+  const corsHeaders = getCorsHeaders(req);
 
-    const fetchBlog = async () => {
-      setLoading(true);
-      setError(null);
+  try {
+    await connectDB();
 
-      try {
-        const res = await fetch(`${API_BASE}/${id}`);
-        
-        // Backend se error ka exact message read karo
-        if (!res.ok) {
-          const text = await res.text();
-          throw new Error(text || "Blog not found");
-        }
+    const blogId = params?.id;
+    if (!blogId) {
+      return NextResponse.json(
+        { error: "Blog ID not provided" },
+        { status: 400, headers: corsHeaders }
+      );
+    }
 
-        const data = await res.json();
-        setBlog(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const blog = await Blog.findById(blogId);
+    if (!blog) {
+      return NextResponse.json(
+        { error: "Blog not found" },
+        { status: 404, headers: corsHeaders }
+      );
+    }
 
-    fetchBlog();
-  }, [id]);
+    return NextResponse.json(blog, { status: 200, headers: corsHeaders });
+  } catch (err) {
+    return NextResponse.json(
+      { error: err.message },
+      { status: 500, headers: corsHeaders }
+    );
+  }
+}
 
-  // Loading state
-  if (loading)
-    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+// DELETE blog
+export async function DELETE(req, { params }) {
+  const corsHeaders = getCorsHeaders(req);
 
-  // Error state
-  if (error)
-    return <p className="text-center mt-10 text-red-500">{error}</p>;
+  try {
+    await connectDB();
 
-  // No blog found
-  if (!blog)
-    return <p className="text-center mt-10 text-red-500">Blog not found</p>;
+    const blogId = params?.id;
+    if (!blogId) {
+      return NextResponse.json(
+        { error: "Valid Blog ID not provided" },
+        { status: 400, headers: corsHeaders }
+      );
+    }
 
-  // Single blog detail page
-  return (
-    <div className="max-w-4xl mx-auto py-10 px-4">
-      {blog.image && (
-        <img
-          src={blog.image}
-          alt={blog.title}
-          className="w-full h-80 object-cover rounded-lg"
-        />
-      )}
-      <h1 className="text-4xl font-bold mt-6">{blog.title}</h1>
-      {blog.subtitle && (
-        <h2 className="text-gray-600 text-xl mt-2">{blog.subtitle}</h2>
-      )}
-      <div className="mt-6 text-gray-800 leading-8 whitespace-pre-line">
-        {blog.content}
-      </div>
-    </div>
-  );
+    const deletedBlog = await Blog.findByIdAndDelete(blogId);
+    if (!deletedBlog) {
+      return NextResponse.json(
+        { error: "Blog not found" },
+        { status: 404, headers: corsHeaders }
+      );
+    }
+
+    return NextResponse.json(
+      { message: "Blog deleted successfully" },
+      { status: 200, headers: corsHeaders }
+    );
+  } catch (err) {
+    return NextResponse.json(
+      { error: err.message },
+      { status: 500, headers: corsHeaders }
+    );
+  }
+}
+
+// PUT blog (update)
+export async function PUT(req, { params }) {
+  const corsHeaders = getCorsHeaders(req);
+
+  try {
+    await connectDB();
+
+    const blogId = params?.id;
+    if (!blogId) {
+      return NextResponse.json(
+        { error: "Valid Blog ID not provided" },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
+    const body = await req.json();
+    if (!body.title || !body.content) {
+      return NextResponse.json(
+        { error: "Title and content are required" },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
+    const updatedBlog = await Blog.findByIdAndUpdate(blogId, body, {
+      new: true,
+      runValidators: true,
+    });
+
+    if (!updatedBlog) {
+      return NextResponse.json(
+        { error: "Blog not found" },
+        { status: 404, headers: corsHeaders }
+      );
+    }
+
+    return NextResponse.json(updatedBlog, { status: 200, headers: corsHeaders });
+  } catch (err) {
+    return NextResponse.json(
+      { error: err.message },
+      { status: 500, headers: corsHeaders }
+    );
+  }
 }
