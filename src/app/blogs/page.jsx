@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import Portfolio from "@/components/home/portfolio";
+import Portfolio from "../../components/home/components/Portfolio";
 
 export default function BlogsPage() {
   return (
