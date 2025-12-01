@@ -72,7 +72,7 @@ const AboutSlider = () => {
     <div className="py-16 w-full bg-[#005c96] flex items-center justify-center">
       <div className="w-[92%] sm:w-[88%] md:w-[80%] flex flex-col items-center relative">
         <div className="w-full overflow-hidden rounded-md">
-          <div className="relative h-auto min-h-[160px] sm:min-h-[180px] md:min-h-[210px] lg:min-h-[250px]" aria-live="polite">
+          <div className="relative h-auto min-h-40 sm:min-h-[180px] md:min-h-[210px] lg:min-h-[250px]" aria-live="polite">
             {slides.map((slide, i) => (
               <div
                 key={slide.id}
