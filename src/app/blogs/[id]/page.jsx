@@ -12,7 +12,13 @@ export default function SingleBlogPage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!id) return;
+    console.log("Blog ID from useParams():", id); // Debugging
+
+    if (!id) {
+      setError("Blog ID not found in URL");
+      setLoading(false);
+      return;
+    }
 
     const fetchBlog = async () => {
       setLoading(true);
@@ -20,8 +26,15 @@ export default function SingleBlogPage() {
 
       try {
         const res = await fetch(`${API_BASE}/${id}`);
-        if (!res.ok) throw new Error("Blog not found");
+        console.log("Fetch response:", res);
+
+        if (!res.ok) {
+          const errMsg = `Error ${res.status}: ${res.statusText}`;
+          throw new Error(errMsg);
+        }
+
         const data = await res.json();
+        console.log("Fetched blog data:", data);
         setBlog(data);
       } catch (err) {
         setError(err.message);
