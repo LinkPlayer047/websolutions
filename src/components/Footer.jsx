@@ -150,12 +150,6 @@ const Footer = () => {
             href="/"
             className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
           >
-            Login
-          </Link>
-          <Link
-            href="/"
-            className="flex items-center text-[16px] text-[#005c96] hover:text-[#c5003e]"
-          >
             Privacy
           </Link>
           <Link
