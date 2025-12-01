@@ -12,13 +12,7 @@ export default function SingleBlogPage() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log("Blog ID from useParams():", id); // Debugging
-
-    if (!id) {
-      setError("Blog ID not found in URL");
-      setLoading(false);
-      return;
-    }
+    if (!id) return; // Pehli render pe id undefined ho sakta hai
 
     const fetchBlog = async () => {
       setLoading(true);
@@ -26,15 +20,14 @@ export default function SingleBlogPage() {
 
       try {
         const res = await fetch(`${API_BASE}/${id}`);
-        console.log("Fetch response:", res);
-
+        
+        // Backend se error ka exact message read karo
         if (!res.ok) {
-          const errMsg = `Error ${res.status}: ${res.statusText}`;
-          throw new Error(errMsg);
+          const text = await res.text();
+          throw new Error(text || "Blog not found");
         }
 
         const data = await res.json();
-        console.log("Fetched blog data:", data);
         setBlog(data);
       } catch (err) {
         setError(err.message);
@@ -47,11 +40,16 @@ export default function SingleBlogPage() {
   }, [id]);
 
   // Loading state
-  if (loading) return <p className="text-center mt-10 text-gray-500">Loading...</p>;
+  if (loading)
+    return <p className="text-center mt-10 text-gray-500">Loading...</p>;
 
   // Error state
-  if (error || !blog)
-    return <p className="text-center mt-10 text-red-500">{error || "Blog not found"}</p>;
+  if (error)
+    return <p className="text-center mt-10 text-red-500">{error}</p>;
+
+  // No blog found
+  if (!blog)
+    return <p className="text-center mt-10 text-red-500">Blog not found</p>;
 
   // Single blog detail page
   return (
@@ -64,8 +62,12 @@ export default function SingleBlogPage() {
         />
       )}
       <h1 className="text-4xl font-bold mt-6">{blog.title}</h1>
-      {blog.subtitle && <h2 className="text-gray-600 text-xl mt-2">{blog.subtitle}</h2>}
-      <div className="mt-6 text-gray-800 leading-8 whitespace-pre-line">{blog.content}</div>
+      {blog.subtitle && (
+        <h2 className="text-gray-600 text-xl mt-2">{blog.subtitle}</h2>
+      )}
+      <div className="mt-6 text-gray-800 leading-8 whitespace-pre-line">
+        {blog.content}
+      </div>
     </div>
   );
 }
