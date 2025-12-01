@@ -53,7 +53,7 @@ export default function SingleBlogPage() {
 
   // Single blog detail page
   return (
-    <div className="w-full bg-[#004b87] py-16 flex flex-col items-center justify-center">
+    <div className="w-full bg-[#004b87]">
     <div className="max-w-4xl mx-auto py-20 px-4">
       {blog.image && (
         <img
