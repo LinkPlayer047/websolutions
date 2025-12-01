@@ -1,11 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const API_BASE = "https://backend-plum-rho-jbhmx6o6nc.vercel.app/api/blogs";
 
 export default function SingleBlogPage() {
-  const { id } = useParams();
+  const { id } = useParams(); // ye exact _id MongoDB se match hona chahiye
   const [blog, setBlog] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -15,10 +15,11 @@ export default function SingleBlogPage() {
     const fetchBlog = async () => {
       try {
         const res = await fetch(`${API_BASE}/${id}`);
+        if (!res.ok) throw new Error("Blog not found");
         const data = await res.json();
         setBlog(data);
       } catch (err) {
-        console.error("Error fetching blog:", err);
+        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -39,13 +40,9 @@ export default function SingleBlogPage() {
           className="w-full h-80 object-cover rounded-lg"
         />
       )}
-
       <h1 className="text-3xl font-bold mt-6">{blog.title}</h1>
       <h2 className="text-gray-600 text-lg">{blog.subtitle}</h2>
-
-      <div className="mt-6 text-gray-800 leading-8">
-        {blog.content}
-      </div>
+      <div className="mt-6 text-gray-800 leading-8">{blog.content}</div>
     </div>
   );
 }

@@ -32,8 +32,7 @@ const Portfolio = () => {
       <div className="w-[90%] mt-5 columns-2 sm:columns-2 md:columns-3 lg:columns-4 gap-5 space-y-5">
         {blogs.map((blog) => (
           <Link 
-            key={blog._id} 
-            href={`/blogs/${blog._id}`}
+            key={blog._id} href={`/blogs/${blog._id}`}
             className="relative group overflow-hidden break-inside-avoid block"
           >
             {/* Blog Image */}
