@@ -53,8 +53,8 @@ export default function SingleBlogPage() {
 
   // Single blog detail page
   return (
-    <div className="w-full bg-gray-400">
-    <div className="max-w-4xl mx-auto py-20 px-4">
+    <div className="w-full bg-[##F2F2F2] py-10">
+    <div className="max-w-4xl mx-auto bg-white py-20 px-4">
       {blog.image && (
         <img
           src={blog.image}
