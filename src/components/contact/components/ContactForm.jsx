@@ -30,7 +30,7 @@ export default function ContactForm() {
     setLoading(true);
 
     try {
-      const res = await fetch("https://web-solutions-backend.vercel.app/api/contact/submit", {
+      const res = await fetch("https://backend-plum-rho-jbhmx6o6nc.vercel.app/api/contact/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
