@@ -57,7 +57,7 @@ const Portfolio = () => {
 
       <div className="flex items-center justify-center mt-20">
         <Link
-          href="/blogs"
+          href="/work"
           className="group flex items-center justify-center px-7 text-[20px] gap-2 
              border border-blue-200 text-black shadow-lg py-3 rounded-full font-semibold 
              transition-all duration-300 transform
