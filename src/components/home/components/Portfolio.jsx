@@ -30,7 +30,6 @@ const Portfolio = () => {
 
       {/* MASONRY Blog Grid */}
       <div className="w-[90%] mt-5 columns-2 sm:columns-2 md:columns-3 lg:columns-4 gap-5 space-y-5">
-
         {blogs.map((blog) => (
           <Link 
             key={blog._id} 
@@ -55,7 +54,6 @@ const Portfolio = () => {
             </div>
           </Link>
         ))}
-
       </div>
 
       <div className="flex items-center justify-center mt-20">
