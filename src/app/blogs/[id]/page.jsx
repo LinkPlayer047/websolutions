@@ -53,7 +53,7 @@ export default function SingleBlogPage() {
 
   // Single blog detail page
   return (
-    <div className="w-full bg-[#004b87]">
+    <div className="w-full bg-gray-400">
     <div className="max-w-4xl mx-auto py-20 px-4">
       {blog.image && (
         <img
@@ -62,11 +62,11 @@ export default function SingleBlogPage() {
           className="w-full h-80 object-cover rounded-lg"
         />
       )}
-      <h1 className="text-4xl text-white font-bold mt-6">{blog.title}</h1>
+      <h1 className="text-4xl text-black font-bold mt-6">{blog.title}</h1>
       {blog.subtitle && (
-        <h2 className="text-gray-300 text-xl mt-2">{blog.subtitle}</h2>
+        <h2 className="text-black text-xl mt-2">{blog.subtitle}</h2>
       )}
-      <div className="mt-6 text-white leading-8 whitespace-pre-line">
+      <div className="mt-6 text-black leading-8 whitespace-pre-line">
         {blog.content}
       </div>
     </div>
